@@ -10,6 +10,7 @@
         
         $("#pet_likes").hide();
         $("#pet_eats").hide();
+        $("#pet_name").hide();
 
         $("#pet_feels").click(function(e){
         $("#pet_likes").slideDown(200);
@@ -19,16 +20,16 @@
         $("#pet_eats").slideDown(200);
         }); 
 
-        //$("#pet_eats").click(function(e){
-        //$("#pet_name").slideDown(200);
-       // });
+        $("#pet_eats").click(function(e){
+        $("#pet_name").slideDown(200);
+        });
         
             $('#myForm').submit(function(e){
                
                 let feels = $("input[name=feels]:checked").val();
                 let likes = $("input[name=likes]:checked").val();
                 let eats = $("input[name=eats]:checked").val();
-                //let name = $("input[name=name]:type=text").val();
+                let name = $("input[name=name]:text").val();
                 let pet = "";
 
                 if(feels=="fluffy" && likes=="petted" && eats=="carrots"){
@@ -61,7 +62,7 @@
                 output += `<p>My pet feels ${feels}.</p>`;
                 output += `<p>My pet likes to be ${likes}.</p>`;
                 output += `<p>My pet likes to eat ${eats}.</p>`;
-                //output += `<p>My pet's name is ${name}.</p>`;
+                output += `<p>My pet's name is ${name}.</p>`;
 
                 $("#output").html(output);
 
@@ -88,13 +89,18 @@
        <p>Please tell us what your pet will like:</p>
        <input type="radio" name="likes" value="petted" required="required">to be petted <br />
        <input type="radio" name="likes" value="ridden">to be ridden <br />
-   </div>
-       <div id="pet_eats">
+    </div>
+    <div id="pet_eats">
        <h3>Eats</h3>
        <p>Please tell us what your pet likes to eat:</p>
        <input type="radio" name="eats" value="carrots" required="required">carrots <br />
        <input type="radio" name="eats" value="pets">other people's pets <br />
-   </div>
+    </div>
+    <div id="pet_name">
+        <h3>Name</h3>
+        <p>Please tell us the name of your pet:</p>
+        <input type="text" name="name" required="required"> <br />
+    </div>
   
    <input type="submit" value="submit it!" />
    <div id="pet">Pet pic goes here!</div>
